@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Complete</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+    <div class="alert alert-success w-50 mx-auto mt-4" role="alert">
+        <h4 class="alert-heading">Registration complete</h4>
+        <p>Successfully registered user with the id: <strong><span th:text="${user.id}"></span>0</strong>
+            and email: <strong><span th:text="${user.email}"></span></strong></p>
+    </div>
+</body>
+</html>
