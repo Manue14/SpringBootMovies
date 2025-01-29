@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Movies</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+    <p th:each="movie : ${movies}" th:text="${movie.title}"></p>
+    <script th:src="@{/js/bootstrap.js}"></script>
+</body>
+</html>

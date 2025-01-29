@@ -5,10 +5,10 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "\"user\"")
+@Table(name = "Users")
 public class User {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotBlank(message = "The first name cannot be empty")
@@ -19,9 +19,16 @@ public class User {
 
     @NotBlank(message = "The email cannot be empty")
     @Email(message = "The email needs a valid format")
+    @Column(unique = true)
     private String email;
 
     public User() {}
+
+    public User(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
 
     public Long getId() {
         return id;
