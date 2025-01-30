@@ -1,0 +1,11 @@
+.movie_card {
+    align-items: center;
+    border: black solid 1px;
+    display: flex;
+    flex-direction: column;
+}
+
+.movie_card > img {
+    height: 400px;
+    width: 300px;
+}

@@ -18,7 +18,7 @@ public class MoviesApplication {
 	public CommandLineRunner commandLineRunner(MovieRepository movieRepository) {
 		return args -> {
 			movieRepository.save(new Movie("Arrival", "/imgs/arrival.jpg"));
-			movieRepository.save(new Movie("The End of Evangelion", "/imgs/eoe.jpg"));
+			movieRepository.save(new Movie("Blade Runner 2049", "/imgs/runner.jpg"));
 			movieRepository.save(new Movie("The Big Lebowski", "/imgs/lebowski.jpg"));
 		};
 	}

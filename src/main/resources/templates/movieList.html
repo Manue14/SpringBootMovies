@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <title>Movies</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
 </head>
 <body>
-    <p th:each="movie : ${movies}" th:text="${movie.title}"></p>
+    <h2 class="text-center">Vote your favourite movie</h2>
+    <div class="row justify-content-center w-75 mx-auto g-2">
+        <div class="movie_card col-4 bg-danger mx-5" th:each="movie : ${movies}" >
+            <img class="mx-auto" th:src="${movie.imgUrl}"/>
+            <div class="w-25" th:text="${movie.title}"/>
+        </div>
+    </div>
     <script th:src="@{/js/bootstrap.js}"></script>
 </body>
 </html>
