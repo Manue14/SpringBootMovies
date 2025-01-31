@@ -22,6 +22,10 @@ public class User {
     @Column(unique = true)
     private String email;
 
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "vote_id", referencedColumnName = "id")
+    private Vote vote;
+
     public User() {}
 
     public User(String firstName, String lastName, String email) {
@@ -46,6 +50,10 @@ public class User {
         return email;
     }
 
+    public Vote getVote() {
+        return vote;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -56,5 +64,9 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setVote(Vote vote) {
+        this.vote = vote;
     }
 }

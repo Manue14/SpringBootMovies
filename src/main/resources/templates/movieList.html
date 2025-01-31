@@ -7,13 +7,45 @@
     <link rel="stylesheet" th:href="@{/css/custom.css}">
 </head>
 <body>
-    <h2 class="text-center">Vote your favourite movie</h2>
-    <div class="row justify-content-center w-75 mx-auto g-2">
-        <div class="movie_card col-4 bg-danger mx-5" th:each="movie : ${movies}" >
-            <img class="mx-auto" th:src="${movie.imgUrl}"/>
-            <div class="w-25" th:text="${movie.title}"/>
+    <h2 class="text-center mb-4">Vote your favourite movie</h2>
+    <form method="POST" action="#" th:action="@{/movie/vote}" th:object="${voteForm}">
+        <div class="row justify-content-center w-75 mx-auto g-5">
+            <div class="col-4 mx-5" th:each="movie : ${movies}">
+                <div class="movie_card shadow" >
+                    <img class="mx-auto" th:src="${movie.imgUrl}"/>
+                    <div class="movie_title" th:text="${movie.title}"/>
+                    <hr class="w-100"/>
+                    <div class="points_div w-100 px-5 d-flex align-items-center">
+                        <div class="d-flex align-items-center fs-4">
+                            <label class="me-2">Voto</label>
+                            <input type="radio" class="my_radio_btn" name="movie" th:value="${movie.id}" th:field="*{movieId}"/>
+                        </div>
+                        <div class="text-end">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24" stroke-width="1.5" stroke="red" class="icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                            </svg>
+                            <span class="fs-5" th:text="${movie.getVotes().size()}">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="w-75 mx-auto d-flex flex-column align-items-center mt-5 mb-3">
+            <div class="form-group d-flex align-items-center mb-3">
+                <label for="email" class="me-2 pt">Email:</label>
+                <input id="email" type="email" class="form-control" required th:field="*{userEmail}">
+            </div>
+            <button type="submit" class="btn btn-primary">Vote</button>
+        </div>
+
+        <div th:if="${#fields.hasAnyErrors()}" class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+            <p th:if="${#fields.hasErrors('movieId')}" th:errors="*{movieId}">Movie ID Error</p>
+            <p th:if="${#fields.hasErrors('userEmail')}" th:errors="*{userEmail}">Name Error</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+    </form>
     <script th:src="@{/js/bootstrap.js}"></script>
+    <script th:src="@{/js/votes.js}"></script>
 </body>
 </html>
